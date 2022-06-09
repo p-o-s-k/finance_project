@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="ISO-8859-1">
+    <title>Clerk Login</title>
+
+    <script src="jquery.js"></script> 
+    <script type="text/javascript" src="js/clerklogin.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/clerkActions.js"></script>
+    
+    </head>
+    <body>
+        <h2 style="color:rgb(12, 66, 243)"> Login as Clerk</h2>
+        <form>
+        Enter username  <input type="text" id="usrname"><span style="color:red" id="usrnameError"></span> <br>
+        Enter password <input type="password" id="pwd"><span style="color:red" id="passwordError"></span>
+        <span id="loginerror"></span>
+        </form>
+        <button onclick="login()" class="btn btn-primary ">Login</button> <span style="color:red" id="loginError"></span>
+    </body>
+</html>

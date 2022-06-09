@@ -1,0 +1,64 @@
+<html>
+
+<head>
+     <script type="text/javascript">
+        function getProductFromServer(){
+                http=new XMLHttpRequest(); //used to send the req to server
+                let url="http://localhost:8080/finance_project/onlineapi/home/clerk/searchByLoanType/Home";
+                http.open("GET",url);
+                http.setRequestHeader("Accept","application/json");
+                http.send();
+                http.onreadystatechange=f1;
+                return http;
+                //0 ==> before conn open
+                //1 ==> conn opened
+                //2 ==> req send
+                //3 ==> client partially received the res
+                //4 ==> response completed, client received the complete res
+        }
+
+        
+        //call back function, called each time when the state change.....
+        function f1(){
+            if(http.readyState==4){
+                let resTxt=http.responseText;
+                console.log(resTxt);
+                let appli = JSON.parse(resTxt);
+                let data="Application No: "+appli.loanApplicationNo+" Customer Id: "+appli.customerId+" Amount: "+appli.loanAmount;
+                document.getElementById("productSection").innerHTML=data;
+            }
+        }
+        function relevantProduct()
+        {
+
+        }
+
+
+
+     </script>
+     <style>
+         #productSection{
+             background-color: papayawhip;
+             border-style: dashed;
+             color: black;
+             margin-left: 5%;
+             margin-right: 5%;
+             width: 500px;
+             height:200px;
+             padding-left: 17%;
+             border-color: black;
+             font-size: larger;
+             font-variant: small-caps;
+         }
+     </style>
+</head>
+
+<body>
+
+    <button onclick="getProductFromServer()">Get Relevant Product</button>
+    <div id="productSection"></div>
+
+</body>
+
+
+</html>

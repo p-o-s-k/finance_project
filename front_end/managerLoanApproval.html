@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Loan Status Update</title>
+        <title>Update Loan Status</title>
+        <script type="text/javascript" src= js/manageractions.js></script>
+ 
+    <script type="text/javascript" src="js/login.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+
+        <h2>Update Loan Status</h2>
+        <form>
+        Enter Loan Application Number: <input type="text" id="loanApplicationNo" required> <br>
+        Update Status: 
+        <select name="approvalStatus" id="approvalStatus">
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </form>
+        <button onclick="updateLoanApproval()" class="btn btn-primary ">Update Status</button>
+        <br>
+
+    </body>
+</html>

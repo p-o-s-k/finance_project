@@ -1,0 +1,155 @@
+<html>
+
+<head>
+     <script type="text/javascript">
+        // function getHttpConnection(url){
+        //         http=new XMLHttpRequest(); //used to send the req to server
+        //       //  let url="http://localhost:8080/3_Rest_api_app/onlineapi/products/relevantProduct";
+        //         http.open("GET",url);
+        //         http.setRequestHeader("Accept","application/json");
+        //         http.send();
+        //        // http.onreadystatechange=f1;
+        //         return http;
+                //0 ==> before conn open
+                //1 ==> conn opened
+                //2 ==> req send
+                //3 ==> client partially received the res
+                //4 ==> response completed, client received the complete res
+       // }
+        //call back function, called each time when the state change.....
+        // function f1(){
+        //     console.log(http.readyState);
+        //     if(http.readyState==4){
+        //         let resTxt=http.responseText;
+        //         //convert jsntxt into javascript object
+        //         //display in paragraph / heading
+        //         console.log(resTxt);
+        //         let product=JSON.parse(resTxt);
+        //         let data="Product Id : "+product.productId+"<br> Name : "+product.productName+"<br>Price : "+product.price;
+        //         document.getElementById("productSection").style.visibility="visible";
+        //         document.getElementById("productSection").innerHTML=data;
+        //     }
+        // }
+        // function getRelevantProduct(){
+        //     let url="http://localhost:8080/4_Rest_api_app_v2/onlineapi/products/relevantProduct";
+        //     http=getHttpConnection(url);
+           
+        // }
+
+        // function getAllProducts(){
+        //     let url="http://localhost:8080/4_Rest_api_app_v2/onlineapi/products";
+        //     http=getHttpConnection(url);
+        //     http.onreadystatechange=function (){
+        //         if(http.readyState==4){
+        //             let res=http.responseText;
+        //             console.log(res);
+        //             let products=JSON.parse(res);
+        //             let allProdDiv=document.getElementById("allproductsSection");
+
+        //             products.forEach(p => {
+        //                 var prodDiv=document.createElement("div");
+        //                 prodDiv.setAttribute("class","all");
+        //                 prodDiv.style.visibility="visible";
+        //                 var data="Product Id : "+p.productId+"<br> Name : "+p.productName+"<br>Price : "+p.price;
+        //                 prodDiv.innerHTML=data;
+        //                 allProdDiv.appendChild(prodDiv);
+        //             });
+        //         }
+        //     }
+        // }
+
+        function addDetails()
+            { 
+              
+                var customerId = document.getElementById("custId").value;
+                var customerFirstName = document.getElementById("custFname").value;
+                var customerLastName = document.getElementById("custLname").value;
+                var customerGender = document.getElementById("custGender").value;
+                var customerMobile = document.getElementById("custMobile").value;
+                var customerAddress = document.getElementById("custAddress").value;
+                var customerEmail = document.getElementById("custEmail").value;
+                var customerPassword = document.getElementById("custPassword").value;
+            
+
+                var newCust=new customer( customerId,customerFirstName,customerLastName,customerGender,customerMobile,customerMobile,customerEmail,customerAddress,customerPassword);
+                //var customerJson=JSON.stringify(c);
+                console.log(newCust);
+                var prodJSON=JSON.stringify(newCust);
+                console.log(prodJSON);
+
+                let url="http://localhost:8080/finance_project/onlineapi/home/customer/addDetails";
+                http=new XMLHttpRequest(); //used to send the req to server
+                http.open("POST",url);
+                http.setRequestHeader("Content-Type","application/json");
+                http.setRequestHeader("Accept","application/json");
+               // http.setRequestHeader("Authorization","Basic YWxiaW46MTIz");
+
+                http.onreadystatechange=function (){
+                if(http.readyState==4){
+                    let res=http.responseText;
+                    console.log(http.status);
+                    
+                }
+            }
+            http.send(JSON.stringify(newCust));
+
+                alert("stored");
+
+
+            }
+
+       
+        function customer( customerId,customerFirstName,customerLastName,customerGender,customerMobile,customerMobile,customerEmail,customerAddress,customerPassword)
+        {
+            this.customerId = customerId;
+            this.customerFirstName = customerFirstName;
+            this.customerLastName = customerLastName;
+            this.customerGender = customerGender;
+            this.customerMobile = customerMobile;
+            this.customerEmail = customerEmail;
+            this.customerAddress = customerAddress;
+            this.customerPassword = customerPassword;
+               
+        }
+
+         </script>
+     <style type="text/css">
+          #newCustForm{
+              background-color: rgb(205, 241, 243);
+              width: 300px;
+              height: auto;
+              border-style: solid;
+             border-radius: 30px;
+             margin-left: 5%;
+             margin-top: 2%;
+             padding-left: 2%;
+             padding-top: 1%;
+             font-size: 200%;
+             color:violet;
+             border-color: navy;
+            float:left;
+          }
+    </style>
+</head>
+
+<body>
+
+    <div id=newCustForm>
+        enter customer Id:<input type="text" id="custId">
+        enter first name:<input type="text" id="custFname">
+        enter last Name:<input type="text" id="custLname">
+        enter Gender:<input type="text" id="custGender">
+        enter Mobile number:<input type="text" id="custMobile">
+        enter Address:<input type="text" id="custAddress">
+        enter Email:<input type="text" id="custEmail">
+        enter Password:<input type="text" id="custPassword">
+        <button onclick="addDetails()">submit</button>
+    </div>
+  <!-- <div id="productSection"></div>
+  <div id="allproductsSection">
+
+  </div> -->
+</body>
+
+
+</html>

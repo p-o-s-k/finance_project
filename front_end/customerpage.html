@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Customer Home</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <style type="text/css" src="css/mainstyle.css"> </style>
+        <script type="text/javascript" src="js/customerActions.js"></script>
+        <script type="text/javascript" src="js/logout.js"></script>
+        <script type="text/javascript">
+            function welcome(){
+                var customer=JSON.parse(sessionStorage.getItem("customerDetails"));
+                document.getElementById("welcome").innerHTML=`Welcome, ${customer.customerFirstName} ${customer.customerLastName} !`;
+            }
+           
+        </script>
+    </head>
+
+    <body onload="welcome()">
+        <p align=right><input type="button"  class="btn btn-primary " value="Logout" onclick="logout()"></p>
+        <h2 id="welcome" style="color: rgb(12, 66, 243);"></h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" id="form" align=left>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary " onclick="location.href='loanApplicationcustomer.html'">New Loan Application</button>
+                        <button type="button" class="btn btn-primary " onclick="viewMyApplications()">View my Loan Applications</button>
+                        <button type="button" class="btn btn-primary " onclick="viewMyLoans()">View my Active Loans</button>                        <button type="button" class="btn btn-primary " onclick="location.href='deleteapplication.html'">Delete Loan Application</button>
+                        <button type="button" class="btn btn-primary " onclick="location.href='payloan.html'">Pay my Loans</button>
+                    </div>
+                    </div> 
+                </div> 
+            </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6" id="form" align=left>
+                        <table>
+                            <tr><td style="color: rgb(12, 66, 243);">EMI CALCULATOR</td></tr>
+                            <tr><td>Enter Amount:</td><td><input type="text" id="principal"></td></tr>
+                            <tr><td>Enter Rate of Interest:</td><td><input type="text" id="roi"></td></tr>
+                            <tr><td>Enter Tenure in Months:</td><td><input type="text" id="tenure"></td></tr>
+                            <tr><td><button class="btn btn-primary" onclick="calculateEMI()"> Calculate</button></td></tr>
+                        </table>
+                        <div id="result"></div>
+                    </div> 
+                    </div> 
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6" id="form" align=left>
+                            <table>
+                                <tr><td style="color: rgb(12, 66, 243);">View Balance Amount</td></tr>
+                                <tr><td>Enter Loan Account No:</td><td><input type="text" id="loanAccNo"></td></tr>
+                                <tr><td><button class="btn btn-primary" onclick="viewBalance()">View</button></td></tr>
+                            </table>
+                            <div id="result2"></div>
+                        </div> 
+                        </div> 
+                    </div>
+                
+    </body>
+
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function printQuery(){
+            var applicationList=JSON.parse(sessionStorage.getItem("clerkQuery"));
+            let data="";
+            applicationList.forEach(application => {
+                data=data+`<tr><td>${application.loanApplicationNo}</td><td>${application.loanId}</td>
+            <td>${application.customerId}</td><td>${application.loanAmount}</td><td>${application.loanTenureInMonths}</td>
+            <td>${application.loanApplicationStatus}</td></tr>`;
+            });
+            document.getElementById("applicationListBody").innerHTML=data;
+        }
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        </head>
+    </head>
+    <body onload="printQuery()">
+        <div class="container">
+            <h1 style="color: rgb(12, 66, 243);">Search Results</h1>
+            <h2 id="customerContainer"></h2>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Application No</th>
+                    <th scope="col">Loan Id</th>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Loan Amount</th>
+                    <th scope="col">Loan Tenure(months)</th>
+                    <th scope="col">Application Status</th>
+                  </tr>
+                </thead>
+                <tbody id="applicationListBody">
+                </tbody>
+            
+                </table>
+        </div>
+    </body>
+
+</html>
+
+
+

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>My Loans</title>
+        <script type="text/javascript">
+            function print(){
+            var loanList=JSON.parse(sessionStorage.getItem("customerLoans"));
+            let data="";
+            loanList.forEach(loan => {
+                data=data+`<tr><td>${loan.loanAccountNo}</td><td>${loan.loanApplicationNo}</td>
+            <td>${loan.customerId}</td><td>${loan.loanAmount}</td><td>${loan.monthlyEMI}</td>
+            <td>${loan.loanPrincipal}</td> <td>${loan.loanInterest}</td> <td>${loan.loanRepayable}</td></tr>`;
+            });
+            document.getElementById("loanListBody").innerHTML=data;
+        }
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        </head>
+    </head>
+    <body onload="print()">
+        <div class="container">
+            <h1 style="color: rgb(12, 66, 243);">My Active Loans</h1>
+            <h2 id="customerContainer"></h2>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Loan Account No</th>
+                    <th scope="col">Loan Application No</th>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Loan Amount</th>
+                    <th scope="col">Monthly EMI</th>
+                    <th scope="col">Loan Principal</th>
+                    <th scope="col">Loan Interest</th>
+                    <th scope="col">Loan Repayable</th>
+                  </tr>
+                </thead>
+                <tbody id="loanListBody">
+                </tbody>
+            
+                </table>
+        </div>
+    </body>
+
+</html>
